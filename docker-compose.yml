@@ -1,0 +1,102 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis
+    container_name: redis
+    environment:
+      - REDIS_REPLICATION_mode=master
+      - REDIS_PASSWORD=pass12345
+    ports:
+      - 6379:6379
+    # command: ["redis-cli", "-h", "host.docker.internal"]
+    # stdin_open: true
+    # tty: true      
+    volumes:
+      - redis_data:/data
+    networks:
+      - saga_network
+
+
+  redisinsight:
+    container_name: redisinsight
+    image: redislabs/redisinsight
+    restart: unless-stopped
+    ports:
+      - 18001:8001
+    networks:
+      - saga_network      
+
+
+  # redis-commander:
+  #   image: rediscommander/redis-commander
+  #   container_name: redis-commander
+  #   environment:
+  #     # - REDIS_HOSTS=0.0.0.0:6379
+  #     - REDIS_HOSTS=redis:6379
+  #     #- REDIS_HOSTS=local:redis:6379
+  #   ports:
+  #     - "28081:8081"
+  #   networks:
+  #     - saga_network
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass12345
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - saga_network
+    ports:
+      - 27017:27017
+
+  # adminer:
+  #   #image: adminer
+  #   #image: dockette/adminer:full
+  #   #image: dockette/adminer:latest
+  #   image: dockette/adminer:mongo
+  #   container_name: mongodb-adminer
+  #   restart: always
+  #   ports:
+  #     - 5123:80
+  #   # environment:
+  #   #   ADMINER_DEFAULT_SERVER: mongodb
+  #   #   ADMINER_DEFAULT_USERNAME: root
+  #   #   ADMINER_DEFAULT_PASSWORD: pass12345      
+  #   networks:
+  #     - saga_network
+  #   volumes:
+  #     - adminer-data:/var/www/html  
+
+  # mongo-express:
+  #    image: mongo-express
+  #    container_name: mongo-express
+  #    restart: unless-stopped
+  #    environment:
+  #      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+  #      - ME_CONFIG_BASICAUTH_USERNAME=admin
+  #      - ME_CONFIG_BASICAUTH_PASSWORD=admin123
+
+  #      - ME_CONFIG_MONGODB_SERVER=mongodb     
+  #      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+  #      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass12345
+  #    depends_on:
+  #      - mongodb
+  #    networks:
+  #      - saga_network
+  #    ports:
+  #      - 5223:8081 
+      
+
+networks:
+  saga_network:
+    driver: bridge
+
+volumes:
+  redis_data:
+  mongodb-data:
+  # adminer-data:

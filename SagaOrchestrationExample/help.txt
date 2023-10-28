@@ -1,0 +1,23 @@
+﻿https://github.com/Vahidalizadeh7070/SagaStateMachine_Medium/tree/master?source=post_page-----dd238530f0d7--------------------------------
+https://blog.stackademic.com/implementation-of-saga-orchestration-using-masstransit-dd238530f0d7
+https://github.com/Shaman739/SagaOrchestrationExample
+https://github.com/isaacnborges/saga-example
+
+https://github.com/ashkan-moghadasi/SagaOrchestration/blob/main/src/Saga.Orchestrator/Program.cs rest-call-amongst micros
+
+
+https://www.gencayyildiz.com/blog/microservice-saga-commands-orchestration-implemantasyonu-ile-transaction-yonetimi/
+https://github.com/cjrequena/docker-compose-mongodb/blob/master/docker-compose.yml
+https://github.com/bezkoder/docker-compose-nodejs-mongodb/blob/master/docker-compose.yml
+
+docker-compose up -d
+docker-compose --env-file .env  up -d
+
+
+https://github.com/mongo-express/mongo-express-docker/issues/67
+https://github.com/zeroabsolute/MongoReplicaSetDockerCompose/blob/master/docker-compose.yaml
+
+
+https://medium.com/@kristaps.strals/docker-mongodb-net-core-a-good-time-e21f1acb4b7b
+
+https://jayanttripathy.com/asp-net-core-web-api-with-mongodb-crud/
